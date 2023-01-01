@@ -1,0 +1,18 @@
+FROM 763104351884.dkr.ecr.ap-northeast-2.amazonaws.com/pytorch-training:1.12.1-gpu-py38-cu116-ubuntu20.04-ec2
+
+COPY . /opt/ml/code
+RUN pip3 install -r /opt/ml/code/.misc/requirements/base.txt
+
+RUN cp /opt/ml/code/input/test_image.jpeg /home
+RUN mkdir /root/.aws
+
+# aws credential for s3 download
+COPY credentials /root/.aws
+
+# env
+ENV PYTHONUNBUFFERED=TRUE
+ENV PATH="/opt/ml/code:${PATH}"
+
+WORKDIR /opt/ml/code
+RUN chmod +x /opt/ml/code/embedding.py
+ENTRYPOINT [ "python3", "/opt/ml/code/embedding.py" ] 
