@@ -4,6 +4,7 @@
 
 ## Directory Structure
 <img width="942" alt="Screenshot 2022-12-30 at 2 09 11 PM" src="https://user-images.githubusercontent.com/43153661/210163319-2983750e-0fcf-4eb7-bf9a-c3b85b76e0b0.png">
+
 - [input]
   - movies.csv -> information of movies(title, genre)
   - ratings.csv -> rating data of each user
